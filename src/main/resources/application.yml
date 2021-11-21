@@ -1,8 +1,8 @@
 spring:
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    username: root
     url: jdbc:mariadb://localhost:3306/springtestdb_rest_mysql
+    username: root
     password: root
   jpa:
     properties:
