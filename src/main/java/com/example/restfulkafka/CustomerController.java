@@ -1,14 +1,12 @@
 package com.example.restfulkafka;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RequestMapping("/messages/api")
 @RestController
+@RequestMapping("/api/customers/")
 public class CustomerController {
 
     private final CustomerService customerService;
@@ -17,9 +15,22 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
-    @GetMapping
-    ResponseEntity<List<Customer>> gatAllCustomers(){
+    @GetMapping("/all")
+    @ResponseBody
+    ResponseEntity<List<Customer>> gatAllCustomers() {
         return ResponseEntity.ok(customerService.findAllCustomers());
     }
 
+    @PostMapping("/add")
+    @ResponseBody
+    ResponseEntity<Customer> addNewCustomer(@RequestBody CustomerDto customerDto) {
+        return ResponseEntity.ok(customerService.addNewCustomer(customerDto));
+    }
+
+    @PutMapping("/update/{id}")
+    @ResponseBody
+    ResponseEntity<Customer> addNewCustomer(@RequestBody CustomerDto customerDto, @PathVariable Long id) {
+        return ResponseEntity.ok(customerService.updateCustomerName(customerDto, id));
+    }
 }
+

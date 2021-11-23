@@ -14,8 +14,10 @@
     <name>restfulkafka</name>
     <description>Demo application to send messages to Postgres DB and Kafka throught REST API</description>
     <properties>
-        <java.version>11</java.version>
+        <java.version>1.8</java.version>
         <spring-cloud.version>2020.0.4</spring-cloud.version>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
     </properties>
     <dependencies>
         <dependency>
@@ -47,6 +49,10 @@
         <!--			<classifier>test-binder</classifier>-->
         <!--			<type>test-jar</type>-->
         <!--		</dependency>-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.postgresql</groupId>
